@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="956526de-16dc-4277-8022-ef53bf2c22b3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/navy/otter/UtilityUI/UtilityUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/navy/otter/UtilityUI/UtilityUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +60,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572871048026</updated>
-      <workItem from="1572871052143" duration="6745000" />
+      <workItem from="1572871052143" duration="8328000" />
     </task>
     <task id="LOCAL-00001" summary="added more functions">
       <created>1572875308340</created>
@@ -72,7 +69,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572875308340</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added permissions">
+      <created>1572877824752</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1572877824752</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,6 +95,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added more functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="added more functions" />
+    <MESSAGE value="added permissions" />
+    <option name="LAST_COMMIT_MESSAGE" value="added permissions" />
   </component>
 </project>

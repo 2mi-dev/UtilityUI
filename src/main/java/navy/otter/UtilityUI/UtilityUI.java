@@ -19,14 +19,12 @@ import java.util.Iterator;
 
 public class UtilityUI extends JavaPlugin implements CommandExecutor {
 
-  private HashMap<Player, Inventory> brewingMap;
+  private final HashMap<Player, Inventory> brewingMap = new HashMap<>();
 
   @Override
   public void onEnable() {
-    getLogger().info("UtilityUI enabled");
     this.getCommand("uui").setExecutor(this);
     this.getCommand("uui").setTabCompleter(new EmptyTabCompleter());
-    this.brewingMap = new HashMap<>();
   }
 
   @Override
@@ -36,13 +34,9 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
     }
 
     final Player player = (Player) sender;
-    if (!player.hasPermission("")) {
-      return false;
-    }
 
     Iterator<String> arg = Arrays.asList(args).iterator();
     String option = arg.hasNext() ? arg.next() : "";
-    String verifier = arg.hasNext() ? arg.next() : "";
 
     boolean result = false;
 
@@ -87,96 +81,66 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
   }
 
   public boolean giveDebugStick(Player player) {
-    if (player != null) {
-      PlayerInventory playerinventory = player.getInventory();
-      if (checkForEmptySpace(playerinventory)) {
-        playerinventory.addItem(new ItemStack(Material.DEBUG_STICK, 1));
-        return true;
-      } else {
-        String sb = ChatColor.AQUA +
-            "UtilityUI: " +
-            ChatColor.RED +
-            "Dein Inventar ist voll!";
-        player.sendMessage(sb);
-        return false;
-      }
+    PlayerInventory playerinventory = player.getInventory();
+    if (!isFull(playerinventory)) {
+      playerinventory.addItem(new ItemStack(Material.DEBUG_STICK, 1));
+      return true;
     } else {
+      String sb = ChatColor.AQUA
+          + "UtilityUI: "
+          + ChatColor.RED
+          + "Dein Inventar ist voll!";
+      player.sendMessage(sb);
       return false;
     }
   }
 
   public boolean giveCommandBlock(Player player) {
-    if (player != null) {
-      PlayerInventory playerinventory = player.getInventory();
-      if (checkForEmptySpace(playerinventory)) {
-        playerinventory.addItem(new ItemStack(Material.COMMAND_BLOCK, 1));
-        return true;
-      } else {
-        String sb = ChatColor.AQUA +
-            "UtilityUI: " +
-            ChatColor.RED +
-            "Dein Inventar ist voll!";
-        player.sendMessage(sb);
-        return false;
-      }
+    PlayerInventory playerinventory = player.getInventory();
+    if (!isFull(playerinventory)) {
+      playerinventory.addItem(new ItemStack(Material.COMMAND_BLOCK, 1));
+      return true;
     } else {
+      String sb = ChatColor.AQUA
+          + "UtilityUI: "
+          + ChatColor.RED
+          + "Dein Inventar ist voll!";
+      player.sendMessage(sb);
       return false;
     }
   }
 
   public boolean showAnvilGui(Player player) {
-    if (player != null) {
-      Bukkit.createInventory(player, InventoryType.ANVIL);
-      return true;
-    } else {
-      return false;
-    }
+    Bukkit.createInventory(player, InventoryType.ANVIL);
+    return true;
   }
 
   public boolean showWorkbenchGui(Player player) {
-    if (player != null) {
-      player.openWorkbench(null, true);
-      return true;
-    } else {
-      return false;
-    }
+    player.openWorkbench(null, true);
+    return true;
   }
 
   public boolean showBrewingGui(Player player) {
-    if (player != null) {
-      if (brewingMap.get(player) == null) {
-        Inventory brewing = Bukkit.createInventory(player, InventoryType.BREWING);
-        brewingMap.put(player, brewing);
-      } else {
-        Inventory brewing = brewingMap.get(player);
-        player.openInventory(brewing);
-      }
-      return true;
+    if (brewingMap.get(player) == null) {
+      Inventory brewing = Bukkit.createInventory(player, InventoryType.BREWING);
+      brewingMap.put(player, brewing);
     } else {
-      return false;
+      Inventory brewing = brewingMap.get(player);
+      player.openInventory(brewing);
     }
+    return true;
   }
 
   public boolean showCreativeInventoryGui(Player player) {
-    if (player != null) {
-      Bukkit.createInventory(player, InventoryType.CREATIVE);
+    Bukkit.createInventory(player, InventoryType.CREATIVE);
+    return true;
+  }
+
+  public boolean isFull(PlayerInventory inventory) {
+    if (inventory.firstEmpty() == -1) {
       return true;
     } else {
       return false;
     }
-  }
-
-  public boolean checkForEmptySpace(PlayerInventory inventory) {
-    for (ItemStack item : inventory.getContents()) {
-      if (item == null) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  @Override
-  public void onDisable() {
-    getLogger().info("UtilityUI disabled");
   }
 }
