@@ -111,7 +111,8 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
   }
 
   public boolean showAnvilGui(Player player) {
-    Bukkit.createInventory(player, InventoryType.ANVIL);
+    Inventory anvil = Bukkit.createInventory(player, InventoryType.ANVIL);
+    player.openInventory(anvil);
     return true;
   }
 
@@ -123,6 +124,7 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
   public boolean showBrewingGui(Player player) {
     if (brewingMap.get(player) == null) {
       Inventory brewing = Bukkit.createInventory(player, InventoryType.BREWING);
+      player.openInventory(brewing);
       brewingMap.put(player, brewing);
     } else {
       Inventory brewing = brewingMap.get(player);
@@ -132,7 +134,8 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
   }
 
   public boolean showCreativeInventoryGui(Player player) {
-    Bukkit.createInventory(player, InventoryType.CREATIVE);
+    Inventory creative = Bukkit.createInventory(player, InventoryType.CREATIVE);
+    player.openInventory(creative);
     return true;
   }
 

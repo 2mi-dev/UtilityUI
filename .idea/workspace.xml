@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="956526de-16dc-4277-8022-ef53bf2c22b3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/navy/otter/UtilityUI/UtilityUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/navy/otter/UtilityUI/UtilityUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -60,7 +61,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572871048026</updated>
-      <workItem from="1572871052143" duration="8952000" />
+      <workItem from="1572871052143" duration="9436000" />
     </task>
     <task id="LOCAL-00001" summary="added more functions">
       <created>1572875308340</created>
@@ -97,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572879545248</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="yml changes">
+      <created>1572880046904</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1572880046904</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,6 +127,7 @@
     <MESSAGE value="added permissions" />
     <MESSAGE value="code cleanup" />
     <MESSAGE value="added target folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="added target folder" />
+    <MESSAGE value="yml changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="yml changes" />
   </component>
 </project>
