@@ -126,6 +126,7 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
               + ChatColor.RED
               + "Diese Kiste existiert nicht.";
           player.sendMessage(sb);
+          return false;
         }
         break;
       default:
