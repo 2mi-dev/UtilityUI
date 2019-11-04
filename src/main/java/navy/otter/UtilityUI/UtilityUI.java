@@ -24,7 +24,7 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
   @Override
   public void onEnable() {
     this.getCommand("uui").setExecutor(this);
-    this.getCommand("uui").setTabCompleter(new EmptyTabCompleter());
+    this.getCommand("uui").setTabCompleter(new UtiltiyTabCompleter());
   }
 
   @Override
@@ -67,11 +67,6 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
       case "wb":
         if (player.hasPermission("UtilityUI.workbench")) {
           result = showWorkbenchGui(player);
-        }
-        break;
-      case "creative":
-        if (player.hasPermission("UtilityUI.creative")) {
-          result = showCreativeInventoryGui(player);
         }
         break;
       default:
@@ -133,17 +128,7 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
     return true;
   }
 
-  public boolean showCreativeInventoryGui(Player player) {
-    Inventory creative = Bukkit.createInventory(player, InventoryType.CREATIVE);
-    player.openInventory(creative);
-    return true;
-  }
-
   public boolean isFull(PlayerInventory inventory) {
-    if (inventory.firstEmpty() == -1) {
-      return true;
-    } else {
-      return false;
-    }
+    return inventory.firstEmpty() == -1;
   }
 }
