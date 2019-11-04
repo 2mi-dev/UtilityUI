@@ -11,13 +11,11 @@ import org.bukkit.entity.Player;
 
 public class UtiltiyTabCompleter implements TabCompleter {
 
-  public List<String> onTabComplete(CommandSender arg0, Command arg1, String arg2, String[] arg3) {
+  public List<String> onTabComplete(CommandSender player, Command cmd, String label, String[] args) {
     ArrayList<String> list = new ArrayList<>();
-    if (!(arg0 instanceof Player) || arg3.length <= 1) {
+    if (!(player instanceof Player) || args.length <= 1) {
       return new ArrayList<>();
     }
-
-    final Player player = (Player) arg0;
 
     if (player.hasPermission("UtilityUI.anvil")) {
       list.add("anvil");
@@ -37,7 +35,7 @@ public class UtiltiyTabCompleter implements TabCompleter {
 
     return list
         .stream()
-        .filter((string) -> string.startsWith(arg3[0]))
+        .filter((string) -> string.startsWith(args[0]))
         .collect(Collectors.toList());
   }
 }

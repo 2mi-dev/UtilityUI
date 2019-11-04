@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="956526de-16dc-4277-8022-ef53bf2c22b3" name="Default Changelist" comment="removed creative inventory method">
+    <list default="true" id="956526de-16dc-4277-8022-ef53bf2c22b3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/navy/otter/UtilityUI/EmptyTabCompleter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/navy/otter/UtilityUI/EmptyTabCompleter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/navy/otter/UtilityUI/UtilityUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/navy/otter/UtilityUI/UtilityUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/UtilityUI-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/UtilityUI-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/navy/otter/UtilityUI/EmptyTabCompleter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/navy/otter/UtilityUI/UtilityUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/navy/otter/UtilityUI/UtilityUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +65,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572871048026</updated>
-      <workItem from="1572871052143" duration="12349000" />
+      <workItem from="1572871052143" duration="12699000" />
+      <workItem from="1572884688080" duration="958000" />
     </task>
     <task id="LOCAL-00001" summary="added more functions">
       <created>1572875308340</created>
@@ -121,7 +124,21 @@
       <option name="project" value="LOCAL" />
       <updated>1572880874427</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added new TabCompleter">
+      <created>1572883482184</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1572883482184</updated>
+    </task>
+    <task id="LOCAL-00010" summary="edited tabcompleter">
+      <created>1572883666201</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1572883666201</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,7 +149,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -147,6 +166,8 @@
     <MESSAGE value="bugfixes" />
     <MESSAGE value="rebuild" />
     <MESSAGE value="removed creative inventory method" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed creative inventory method" />
+    <MESSAGE value="added new TabCompleter" />
+    <MESSAGE value="edited tabcompleter" />
+    <option name="LAST_COMMIT_MESSAGE" value="edited tabcompleter" />
   </component>
 </project>
