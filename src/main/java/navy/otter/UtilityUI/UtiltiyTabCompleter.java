@@ -13,24 +13,26 @@ public class UtiltiyTabCompleter implements TabCompleter {
 
   public List<String> onTabComplete(CommandSender player, Command cmd, String label, String[] args) {
     ArrayList<String> list = new ArrayList<>();
-    if (!(player instanceof Player) || args.length <= 1) {
+    if (!(player instanceof Player)) {
       return new ArrayList<>();
     }
 
-    if (player.hasPermission("UtilityUI.anvil")) {
-      list.add("anvil");
-    }
-    if (player.hasPermission("UtilityUI.brewing")) {
-      list.add("brew");
-    }
-    if (player.hasPermission("UtilityUI.commandblock")) {
-      list.add("cmd");
-    }
-    if (player.hasPermission("UtilityUI.debugstick")) {
-      list.add("debug");
-    }
-    if (player.hasPermission("UtilityUI.workbench")) {
-      list.add("wb");
+    if(args.length <= 1) {
+      if (player.hasPermission("UtilityUI.anvil")) {
+        list.add("anvil");
+      }
+      if (player.hasPermission("UtilityUI.brewing")) {
+        list.add("brew");
+      }
+      if (player.hasPermission("UtilityUI.commandblock")) {
+        list.add("cmd");
+      }
+      if (player.hasPermission("UtilityUI.debugstick")) {
+        list.add("debug");
+      }
+      if (player.hasPermission("UtilityUI.workbench")) {
+        list.add("wb");
+      }
     }
 
     return list
