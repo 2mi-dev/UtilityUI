@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="956526de-16dc-4277-8022-ef53bf2c22b3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/navy/otter/UtilityUI/UtilityUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/navy/otter/UtilityUI/UtilityUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +64,7 @@
       <updated>1572871048026</updated>
       <workItem from="1572871052143" duration="12699000" />
       <workItem from="1572884688080" duration="1883000" />
-      <workItem from="1572896008402" duration="4845000" />
+      <workItem from="1572896008402" duration="5584000" />
     </task>
     <task id="LOCAL-00001" summary="added more functions">
       <created>1572875308340</created>
@@ -151,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572885965441</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="added customChests">
+      <created>1572900921064</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1572900921064</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,6 +187,7 @@
     <MESSAGE value="removed creative inventory method" />
     <MESSAGE value="added new TabCompleter" />
     <MESSAGE value="edited tabcompleter" />
-    <option name="LAST_COMMIT_MESSAGE" value="edited tabcompleter" />
+    <MESSAGE value="added customChests" />
+    <option name="LAST_COMMIT_MESSAGE" value="added customChests" />
   </component>
 </project>

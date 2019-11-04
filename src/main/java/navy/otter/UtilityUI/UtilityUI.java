@@ -1,5 +1,6 @@
 package navy.otter.UtilityUI;
 
+import com.google.common.base.Strings;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -38,7 +39,7 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
 
     Iterator<String> arg = Arrays.asList(args).iterator();
     String option = arg.hasNext() ? arg.next() : "";
-    String argument  = arg.hasNext() ? arg.next() : "";
+    String argument = arg.hasNext() ? arg.next() : "";
     String detail = arg.hasNext() ? arg.next() : "";
 
     boolean result = false;
@@ -109,33 +110,35 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
   }
 
   public boolean chestManager(Player player, String argument, String detail) {
-    if(!detail.toLowerCase().equals("")) {
-      if(argument.toLowerCase().equals("add")) {
-        createNewChest(this.playerCustomChests, player, detail);
+    if (detail.toLowerCase().equals("")) {
+      return false;
+    }
+    if (argument.toLowerCase().equals("open")) {
+      if (this.playerCustomChests.get(player).containsKey(detail)) {
         player.openInventory(this.playerCustomChests.get(player).get(detail));
-        return true;
-      } else if(argument.toLowerCase().equals("open")) {
-        if(this.playerCustomChests.get(player).containsKey(detail)) {
-          player.openInventory(this.playerCustomChests.get(player).get(detail));
-        } else {
-          String sb = ChatColor.AQUA
-              + "UtilityUI: "
-              + ChatColor.RED
-              + "Diese Kiste existiert nicht.";
-          player.sendMessage(sb);
-        }
       } else {
         String sb = ChatColor.AQUA
             + "UtilityUI: "
             + ChatColor.RED
-            + "Argumente ungültig. Nutze /ui chests <open|add> <name>!";
+            + "Diese Kiste existiert nicht.";
         player.sendMessage(sb);
       }
+      return true;
     }
-    return false;
+    if (!argument.toLowerCase().equals("add")) {
+      String sb = ChatColor.AQUA
+          + "UtilityUI: "
+          + ChatColor.RED
+          + "Argumente ungültig. Nutze /ui chests <open|add> <name>!";
+      player.sendMessage(sb);
+    }
+    createNewChest(this.playerCustomChests, player, detail);
+    player.openInventory(this.playerCustomChests.get(player).get(detail));
+    return true;
   }
 
-  private void createNewChest(HashMap<Player, HashMap<String, Inventory>> chestMap, Player player, String chestName) {
+  private void createNewChest(HashMap<Player, HashMap<String, Inventory>> chestMap, Player player,
+      String chestName) {
     Inventory chest = Bukkit.createInventory(player, InventoryType.CHEST, chestName);
     if (!chestMap.containsKey(player)) {
       chestMap.put(player, new HashMap<>());
