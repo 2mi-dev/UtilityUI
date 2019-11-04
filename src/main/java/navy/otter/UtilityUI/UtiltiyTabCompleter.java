@@ -40,7 +40,7 @@ public class UtiltiyTabCompleter implements TabCompleter {
           .collect(Collectors.toList());
     }
 
-    if(args.length == 2) {
+    if(args.length <= 2) {
       if (player.hasPermission("UtilityUI.chests")) {
         list.add("add");
         list.add("open");
@@ -48,7 +48,7 @@ public class UtiltiyTabCompleter implements TabCompleter {
 
       return list
           .stream()
-          .filter((string) -> string.startsWith(args[1]))
+          .filter((string) -> string.startsWith(args[1]) && args[0].equals("chests"))
           .collect(Collectors.toList());
     }
     return new ArrayList<>();
