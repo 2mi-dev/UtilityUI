@@ -1,0 +1,17 @@
+name: UtilityUI
+version: 1.0
+main: navy.otter.UtilityUI.UtilityUI
+api-version: 1.13
+commands:
+  uui:
+    description: main function
+    aliases: [utilityui, ui]
+    permission: UtilityUI.admin
+    permission-message: Du hast keine ausreichende Berechtigung für diesen Befehl.
+permissions:
+  UtilityUI.*:
+    default: false
+  UtilityUI.admin:
+    default: false
+  UtilityUI.player:
+    default: false
