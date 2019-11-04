@@ -43,6 +43,7 @@ public class UtiltiyTabCompleter implements TabCompleter {
     if(args.length <= 2) {
       if (player.hasPermission("UtilityUI.chests")) {
         list.add("add");
+        list.add("list");
         list.add("open");
       }
 

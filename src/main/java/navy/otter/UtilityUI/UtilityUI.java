@@ -1,6 +1,8 @@
 package navy.otter.UtilityUI;
 
 import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.Set;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -86,7 +88,7 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
       return true;
     } else {
       String sb = ChatColor.AQUA
-          + "UtilityUI: "
+          + "[UtilityUI] "
           + ChatColor.RED
           + "Dein Inventar ist voll!";
       player.sendMessage(sb);
@@ -101,7 +103,7 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
       return true;
     } else {
       String sb = ChatColor.AQUA
-          + "UtilityUI: "
+          + "[UtilityUI] "
           + ChatColor.RED
           + "Dein Inventar ist voll!";
       player.sendMessage(sb);
@@ -115,6 +117,15 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
       return false;
     }
 
+    if(!this.playerCustomChests.containsKey(player)) {
+      String sb = ChatColor.AQUA
+          + "[UtilityUI] "
+          + ChatColor.RED
+          + "Du hast noch keine Kisten erstellt.";
+      player.sendMessage(sb);
+      return false;
+    }
+
     switch (argument.toLowerCase()) {
       case "add":
         createNewChest(this.playerCustomChests, player, detail);
@@ -122,16 +133,29 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
       case "open":
         if (!this.playerCustomChests.get(player).containsKey(detail)) {
           String sb = ChatColor.AQUA
-              + "UtilityUI: "
+              + "[UtilityUI] "
               + ChatColor.RED
               + "Diese Kiste existiert nicht.";
           player.sendMessage(sb);
           return false;
         }
         break;
+      case "list":
+        Set<String> keys = this.playerCustomChests.get(player).keySet();
+        String str =
+            ChatColor.GRAY + "["
+            + ChatColor.AQUA + "UtilityUI"
+            + ChatColor.GRAY + "] "
+            + "Deine temporären Chests:";
+        player.sendMessage(str);
+        player.sendMessage(ChatColor.YELLOW + "------------------------");
+        for(String key : keys) {
+          player.sendMessage(ChatColor.GRAY + key);
+        }
+        player.sendMessage(ChatColor.YELLOW + "------------------------");
       default:
         String sb = ChatColor.AQUA
-            + "UtilityUI: "
+            + "[UtilityUI] "
             + ChatColor.RED
             + "Argumente ungültig. Nutze /ui chests <open|add> <name>!";
         player.sendMessage(sb);
