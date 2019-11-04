@@ -9,9 +9,27 @@ commands:
     permission: UtilityUI.admin
     permission-message: Du hast keine ausreichende Berechtigung für diesen Befehl.
 permissions:
-  UtilityUI.*:
-    default: false
   UtilityUI.admin:
+    description: Full access to all tools.
+    default: op
+    children:
+      UtilityUI.anvil: true
+      UtilityUI.brewing: true
+      UtilityUI.commandblock: true
+      UtilityUI.creative: true
+      UtilityUI.debugstick: true
+      UtilityUI.workbench: true
+  UtilityUI.anvil:
     default: false
-  UtilityUI.player:
+  UtilityUI.brewing:
+    description: Access a personal brewing stand GUI.
+    default: false
+  UtilityUI.commandblock:
+    default: false
+  UtilityUI.creative:
+    description: Gives access to the creative inventory from any gamemode via command.
+    default: false
+  UtilityUI.debugstick:
+    default: false
+  UtilityUI.workbench:
     default: false
