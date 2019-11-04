@@ -1,6 +1,7 @@
 package navy.otter.UtilityUI;
 
 import java.util.Set;
+import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -20,8 +21,8 @@ import java.util.Iterator;
 
 public class UtilityUI extends JavaPlugin implements CommandExecutor {
 
-  private final HashMap<Player, Inventory> brewingMap = new HashMap<>();
-  private final HashMap<Player, HashMap<String, Inventory>> playerCustomChests = new HashMap<>();
+  private final HashMap<UUID, Inventory> brewingMap = new HashMap<>();
+  private final HashMap<UUID, HashMap<String, Inventory>> playerCustomChests = new HashMap<>();
 
   @Override
   public void onEnable() {
@@ -112,7 +113,7 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
       return false;
     }
   }
-
+  //todo: uuid statt player
   public boolean chestManager(Player player, String argument, String detail) {
     switch (argument.toLowerCase()) {
       case "add":
@@ -120,13 +121,13 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
           return false;
         }
         createNewChest(this.playerCustomChests, player, detail);
-        player.openInventory(this.playerCustomChests.get(player).get(detail));
+        player.openInventory(this.playerCustomChests.get(player.getUniqueId()).get(detail));
         break;
       case "open":
         if (detail.isEmpty()) {
           return false;
         }
-        if (!this.playerCustomChests.containsKey(player)) {
+        if (!this.playerCustomChests.containsKey(player.getUniqueId())) {
           String sb =
               ChatColor.DARK_GRAY + "["
                   + ChatColor.AQUA + "UtilityUI"
@@ -136,7 +137,7 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
           player.sendMessage(sb);
           return false;
         }
-        if (!this.playerCustomChests.get(player).containsKey(detail)) {
+        if (!this.playerCustomChests.get(player.getUniqueId()).containsKey(detail)) {
           String sb =
               ChatColor.DARK_GRAY + "["
                   + ChatColor.AQUA + "UtilityUI"
@@ -146,10 +147,10 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
           player.sendMessage(sb);
           return false;
         }
-        player.openInventory(this.playerCustomChests.get(player).get(detail));
+        player.openInventory(this.playerCustomChests.get(player.getUniqueId()).get(detail));
         break;
       case "list":
-        if (!this.playerCustomChests.containsKey(player)) {
+        if (!this.playerCustomChests.containsKey(player.getUniqueId())) {
           String sb =
               ChatColor.DARK_GRAY + "["
                   + ChatColor.AQUA + "UtilityUI"
@@ -159,7 +160,7 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
           player.sendMessage(sb);
           return false;
         }
-        Set<String> keys = this.playerCustomChests.get(player).keySet();
+        Set<String> keys = this.playerCustomChests.get(player.getUniqueId()).keySet();
         String str =
             ChatColor.DARK_GRAY + "["
                 + ChatColor.AQUA + "UtilityUI"
@@ -185,13 +186,13 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
     return true;
   }
 
-  private void createNewChest(HashMap<Player, HashMap<String, Inventory>> chestMap, Player player,
+  private void createNewChest(HashMap<UUID, HashMap<String, Inventory>> chestMap, Player player,
       String chestName) {
     Inventory chest = Bukkit.createInventory(player, InventoryType.CHEST, chestName);
-    if (!chestMap.containsKey(player)) {
-      chestMap.put(player, new HashMap<>());
+    if (!chestMap.containsKey(player.getUniqueId())) {
+      chestMap.put(player.getUniqueId(), new HashMap<>());
     }
-    chestMap.get(player).put(chestName, chest);
+    chestMap.get(player.getUniqueId()).put(chestName, chest);
   }
 
   public boolean showWorkbenchGui(Player player) {
@@ -200,12 +201,12 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
   }
 
   public boolean showBrewingGui(Player player) {
-    if (brewingMap.get(player) == null) {
+    if (brewingMap.get(player.getUniqueId()) == null) {
       Inventory brewing = Bukkit.createInventory(player, InventoryType.BREWING);
       player.openInventory(brewing);
-      brewingMap.put(player, brewing);
+      brewingMap.put(player.getUniqueId(), brewing);
     } else {
-      Inventory brewing = brewingMap.get(player);
+      Inventory brewing = brewingMap.get(player.getUniqueId());
       player.openInventory(brewing);
     }
     return true;
