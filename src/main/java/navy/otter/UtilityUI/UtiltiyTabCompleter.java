@@ -13,7 +13,7 @@ public class UtiltiyTabCompleter implements TabCompleter {
 
   public List<String> onTabComplete(CommandSender arg0, Command arg1, String arg2, String[] arg3) {
     ArrayList<String> list = new ArrayList<>();
-    if (!(arg0 instanceof Player)) {
+    if (!(arg0 instanceof Player) || arg3.length <= 1) {
       return new ArrayList<>();
     }
 
