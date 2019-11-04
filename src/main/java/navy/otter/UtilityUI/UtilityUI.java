@@ -75,7 +75,7 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
         }
         break;
       default:
-        player.sendMessage(ChatColor.RED + "Der eingegebene Befehl existiert nicht.");
+        player.sendMessage(ChatColor.RED + "Der eingegebene Befehl existiert nicht!");
     }
     return result;
   }
