@@ -113,7 +113,7 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
       return false;
     }
   }
-  //todo: uuid statt player
+
   public boolean chestManager(Player player, String argument, String detail) {
     switch (argument.toLowerCase()) {
       case "add":
@@ -190,9 +190,9 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
       String chestName) {
     Inventory chest = Bukkit.createInventory(player, InventoryType.CHEST, chestName);
     if (!chestMap.containsKey(player.getUniqueId())) {
-      chestMap.put(player.getUniqueId(), new HashMap<>());
+      chestMap.putIfAbsent(player.getUniqueId(), new HashMap<>());
     }
-    chestMap.get(player.getUniqueId()).put(chestName, chest);
+    chestMap.get(player.getUniqueId()).putIfAbsent(chestName, chest);
   }
 
   public boolean showWorkbenchGui(Player player) {
@@ -200,6 +200,7 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
     return true;
   }
 
+  //todo: check bug
   public boolean showBrewingGui(Player player) {
     if (brewingMap.get(player.getUniqueId()) == null) {
       Inventory brewing = Bukkit.createInventory(player, InventoryType.BREWING);
