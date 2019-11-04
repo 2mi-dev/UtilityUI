@@ -7,10 +7,10 @@ commands:
     description: main function
     aliases: [utilityui, ui]
     permission: UtilityUI.admin
-    permission-message: Du hast keine ausreichende Berechtigung für diesen Befehl.
+    permission-message: "Du hast keine ausreichende Berechtigung für diesen Befehl."
 permissions:
   UtilityUI.admin:
-    description: Full access to all tools.
+    description: "Full access to all tools."
     default: op
     children:
       UtilityUI.anvil: true
@@ -22,12 +22,12 @@ permissions:
   UtilityUI.anvil:
     default: false
   UtilityUI.brewing:
-    description: Access a personal brewing stand GUI.
+    description: "Access a personal brewing stand GUI."
     default: false
   UtilityUI.commandblock:
     default: false
   UtilityUI.creative:
-    description: Gives access to the creative inventory from any gamemode via command.
+    description: "Gives access to the creative inventory from any gamemode via command."
     default: false
   UtilityUI.debugstick:
     default: false

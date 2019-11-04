@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="956526de-16dc-4277-8022-ef53bf2c22b3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/navy/otter/UtilityUI/UtilityUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/navy/otter/UtilityUI/UtilityUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +60,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572871048026</updated>
-      <workItem from="1572871052143" duration="8328000" />
+      <workItem from="1572871052143" duration="8952000" />
     </task>
     <task id="LOCAL-00001" summary="added more functions">
       <created>1572875308340</created>
@@ -76,7 +76,28 @@
       <option name="project" value="LOCAL" />
       <updated>1572877824752</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="code cleanup">
+      <created>1572879421129</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1572879421129</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added target folder">
+      <created>1572879493381</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1572879493381</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added target folder">
+      <created>1572879545248</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1572879545248</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -96,6 +117,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added more functions" />
     <MESSAGE value="added permissions" />
-    <option name="LAST_COMMIT_MESSAGE" value="added permissions" />
+    <MESSAGE value="code cleanup" />
+    <MESSAGE value="added target folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="added target folder" />
   </component>
 </project>
