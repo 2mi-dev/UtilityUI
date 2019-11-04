@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
@@ -16,13 +17,16 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public class UtilityUI extends JavaPlugin {
+public class UtilityUI extends JavaPlugin implements CommandExecutor {
+
+    private HashMap<Player, Inventory> brewingMap;
+
     @Override
     public void onEnable() {
         getLogger().info("onEnable is called!");
         this.getCommand("uui").setExecutor(this);
         this.getCommand("uui").setTabCompleter(new EmptyTabCompleter());
-        HashMap<Player, Inventory> anvilMap = new HashMap<>();
+        this.brewingMap = new HashMap<>();
     }
 
     @Override
@@ -111,7 +115,7 @@ public class UtilityUI extends JavaPlugin {
 
     public boolean showWorkbenchGUI (Player player) {
         if(player != null) {
-            Inventory anvil = Bukkit.createInventory(player, InventoryType.WORKBENCH);
+            player.openWorkbench(null, true);
             return true;
         } else {
             return false;
@@ -120,7 +124,13 @@ public class UtilityUI extends JavaPlugin {
 
     public boolean showBrewingGUI (Player player) {
         if(player != null) {
-            Inventory anvil = Bukkit.createInventory(player, InventoryType.BREWING);
+            if(brewingMap.get(player) == null) {
+                Inventory brewing = Bukkit.createInventory(player, InventoryType.BREWING);
+                brewingMap.put(player, brewing);
+            } else {
+                Inventory brewing = brewingMap.get(player);
+                player.openInventory(brewing);
+            }
             return true;
         } else {
             return false;
@@ -129,7 +139,7 @@ public class UtilityUI extends JavaPlugin {
 
     public boolean showCreativeInventoryGUI (Player player) {
         if(player != null) {
-            Inventory anvil = Bukkit.createInventory(player, InventoryType.CREATIVE);
+            Inventory creative = Bukkit.createInventory(player, InventoryType.CREATIVE);
             return true;
         } else {
             return false;
