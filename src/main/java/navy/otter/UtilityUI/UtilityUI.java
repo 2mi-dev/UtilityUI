@@ -110,29 +110,33 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
   }
 
   public boolean chestManager(Player player, String argument, String detail) {
-    if (detail.toLowerCase().equals("")) {
+
+    if(detail.isEmpty()) {
       return false;
     }
-    if (argument.toLowerCase().equals("open")) {
-      if (this.playerCustomChests.get(player).containsKey(detail)) {
-        player.openInventory(this.playerCustomChests.get(player).get(detail));
-      } else {
+
+    switch (argument.toLowerCase()) {
+      case "add":
+        createNewChest(this.playerCustomChests, player, detail);
+        break;
+      case "open":
+        if (!this.playerCustomChests.get(player).containsKey(detail)) {
+          String sb = ChatColor.AQUA
+              + "UtilityUI: "
+              + ChatColor.RED
+              + "Diese Kiste existiert nicht.";
+          player.sendMessage(sb);
+        }
+        break;
+      default:
         String sb = ChatColor.AQUA
             + "UtilityUI: "
             + ChatColor.RED
-            + "Diese Kiste existiert nicht.";
+            + "Argumente ungültig. Nutze /ui chests <open|add> <name>!";
         player.sendMessage(sb);
-      }
-      return true;
+        return false;
     }
-    if (!argument.toLowerCase().equals("add")) {
-      String sb = ChatColor.AQUA
-          + "UtilityUI: "
-          + ChatColor.RED
-          + "Argumente ungültig. Nutze /ui chests <open|add> <name>!";
-      player.sendMessage(sb);
-    }
-    createNewChest(this.playerCustomChests, player, detail);
+
     player.openInventory(this.playerCustomChests.get(player).get(detail));
     return true;
   }

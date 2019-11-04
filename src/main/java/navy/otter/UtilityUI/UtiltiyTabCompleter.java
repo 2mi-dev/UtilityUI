@@ -18,8 +18,8 @@ public class UtiltiyTabCompleter implements TabCompleter {
     }
 
     if(args.length <= 1) {
-      if (player.hasPermission("UtilityUI.anvil")) {
-        list.add("anvil");
+      if (player.hasPermission("UtilityUI.chests")) {
+        list.add("chests");
       }
       if (player.hasPermission("UtilityUI.brewing")) {
         list.add("brew");
@@ -33,11 +33,24 @@ public class UtiltiyTabCompleter implements TabCompleter {
       if (player.hasPermission("UtilityUI.workbench")) {
         list.add("wb");
       }
+
+      return list
+          .stream()
+          .filter((string) -> string.startsWith(args[0]))
+          .collect(Collectors.toList());
     }
 
-    return list
-        .stream()
-        .filter((string) -> string.startsWith(args[0]))
-        .collect(Collectors.toList());
+    if(args.length == 2) {
+      if (player.hasPermission("UtilityUI.chests")) {
+        list.add("add");
+        list.add("open");
+      }
+
+      return list
+          .stream()
+          .filter((string) -> string.startsWith(args[1]))
+          .collect(Collectors.toList());
+    }
+    return new ArrayList<>();
   }
 }
