@@ -20,6 +20,7 @@ import java.util.Iterator;
 public class UtilityUI extends JavaPlugin implements CommandExecutor {
 
   private final HashMap<Player, Inventory> brewingMap = new HashMap<>();
+  private final HashMap<Player, HashMap<String, Inventory>> playerCustomChests = new HashMap<>();
 
   @Override
   public void onEnable() {
@@ -37,6 +38,8 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
 
     Iterator<String> arg = Arrays.asList(args).iterator();
     String option = arg.hasNext() ? arg.next() : "";
+    String argument  = arg.hasNext() ? arg.next() : "";
+    String detail = arg.hasNext() ? arg.next() : "";
 
     boolean result = false;
 
@@ -54,11 +57,6 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
           result = giveCommandBlock(player);
         }
         break;
-      case "anvil":
-        if (player.hasPermission("UtilityUI.anvil")) {
-          result = showAnvilGui(player);
-        }
-        break;
       case "brew":
         if (player.hasPermission("UtilityUI.brewing")) {
           result = showBrewingGui(player);
@@ -69,6 +67,11 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
           result = showWorkbenchGui(player);
         }
         break;
+      case "chests":
+        if (player.hasPermission("UtilityUI.chests")) {
+          result = chestManager(player, argument, detail);
+        }
+        break;
       default:
         player.sendMessage(ChatColor.RED + "Der eingegebene Befehl existiert nicht!");
     }
@@ -77,7 +80,7 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
 
   public boolean giveDebugStick(Player player) {
     PlayerInventory playerinventory = player.getInventory();
-    if (!isFull(playerinventory)) {
+    if (hasFreeSlot(playerinventory)) {
       playerinventory.addItem(new ItemStack(Material.DEBUG_STICK, 1));
       return true;
     } else {
@@ -92,7 +95,7 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
 
   public boolean giveCommandBlock(Player player) {
     PlayerInventory playerinventory = player.getInventory();
-    if (!isFull(playerinventory)) {
+    if (hasFreeSlot(playerinventory)) {
       playerinventory.addItem(new ItemStack(Material.COMMAND_BLOCK, 1));
       return true;
     } else {
@@ -105,10 +108,39 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
     }
   }
 
-  public boolean showAnvilGui(Player player) {
-    Inventory anvil = Bukkit.createInventory(player, InventoryType.ANVIL);
-    player.openInventory(anvil);
-    return true;
+  public boolean chestManager(Player player, String argument, String detail) {
+    if(!detail.toLowerCase().equals("")) {
+      if(argument.toLowerCase().equals("add")) {
+        createNewChest(this.playerCustomChests, player, detail);
+        player.openInventory(this.playerCustomChests.get(player).get(detail));
+        return true;
+      } else if(argument.toLowerCase().equals("open")) {
+        if(this.playerCustomChests.get(player).containsKey(detail)) {
+          player.openInventory(this.playerCustomChests.get(player).get(detail));
+        } else {
+          String sb = ChatColor.AQUA
+              + "UtilityUI: "
+              + ChatColor.RED
+              + "Diese Kiste existiert nicht.";
+          player.sendMessage(sb);
+        }
+      } else {
+        String sb = ChatColor.AQUA
+            + "UtilityUI: "
+            + ChatColor.RED
+            + "Argumente ungültig. Nutze /ui chests <open|add> <name>!";
+        player.sendMessage(sb);
+      }
+    }
+    return false;
+  }
+
+  private void createNewChest(HashMap<Player, HashMap<String, Inventory>> chestMap, Player player, String chestName) {
+    Inventory chest = Bukkit.createInventory(player, InventoryType.CHEST, chestName);
+    if (!chestMap.containsKey(player)) {
+      chestMap.put(player, new HashMap<>());
+    }
+    chestMap.get(player).put(chestName, chest);
   }
 
   public boolean showWorkbenchGui(Player player) {
@@ -128,7 +160,7 @@ public class UtilityUI extends JavaPlugin implements CommandExecutor {
     return true;
   }
 
-  public boolean isFull(PlayerInventory inventory) {
-    return inventory.firstEmpty() == -1;
+  public boolean hasFreeSlot(PlayerInventory inventory) {
+    return inventory.firstEmpty() != -1;
   }
 }
